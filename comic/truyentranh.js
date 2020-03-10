@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View,Image,TouchableOpacity, Alert} from 'react-native';
 
-export default function truyenTranh({item,handleDelete,next,navigation}) {
+export default function truyenTranh({item,handleDelete,next,navigation,handleEdit}) {
 
     const alertDelete = (id,handleDelete) => {
         return Alert.alert(
@@ -41,10 +41,15 @@ export default function truyenTranh({item,handleDelete,next,navigation}) {
             <Text style={styles.textbtn} >DETAIL</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.btn2} onPress={() => handleEdit(item.id)} >
+            <Text style={styles.textbtn}>EDIT</Text>
+            </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btn2} onPress={() => {alertDelete(item.id,handleDelete)}} >
+            <TouchableOpacity style={styles.btn3} onPress={() => {alertDelete(item.id,handleDelete)}} >
             <Text style={styles.textbtn}>DELETE</Text>
             </TouchableOpacity>
+
+            
 
             </View>  
         </View>
@@ -95,6 +100,14 @@ const styles = StyleSheet.create({
         padding:8
     },
     btn2:{
+        left:10,
+        backgroundColor: 'gray',
+        height: 30,
+        width:55,
+        borderRadius:10,
+        padding:8
+    },
+    btn3:{
         left:20,
         backgroundColor: 'gray',
         height: 30,
@@ -109,7 +122,7 @@ const styles = StyleSheet.create({
     },
     btnAll:{
         top:10,
-        left:40,
+        
         flex:1,
         flexDirection:'row',
         alignItems:'center',
